@@ -1,7 +1,7 @@
 import axios from 'axios'
 const setDefault = () => {
     return function (dispatch) {
-        return  axios.get("http://productapimyshoppingcart.azurewebsites.net/Default/GetAllProducts").then(comments => {
+        return  axios.get("https://productapimyshoppingcart.azurewebsites.net/Default/GetAllProducts").then(comments => {
               dispatch( {
                 type: "DEFAULTPRODUCTS",
                 payload: comments.data

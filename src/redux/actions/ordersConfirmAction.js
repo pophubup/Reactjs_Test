@@ -2,7 +2,7 @@ import axios from 'axios'
 const storeOrder = (obj) => {
     return function (dispatch) {
 
-         return  axios.post("http://productapimyshoppingcart.azurewebsites.net/Default/CreateOrders/",
+         return  axios.post("https://productapimyshoppingcart.azurewebsites.net/Default/CreateOrders/",
              {
                 OrderID: obj._model.OrderID,
                 orderDetails :obj._model.orderDetails

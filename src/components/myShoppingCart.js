@@ -90,7 +90,7 @@ const App = () =>{
          dispatch(allActions.ordersConfirmAction.storeOrder({_model}))
          dispatch(allActions.removeProductsAction.removeProducts({paylaod: [] }))   
          setStstus({...status, toMyOrder : true})
-         console.log(status)
+        
       }
       const cellEditProp = {
         mode: 'click',
@@ -113,8 +113,7 @@ const App = () =>{
               </div>
            
             )
-          } 
-                       
+          }       
           <BootstrapTable data={data} version='4' pagination={true} options={ options } key cellEdit={ cellEditProp }>
           <TableHeaderColumn isKey dataField='productID' editable={ false }>Product ID  </TableHeaderColumn>
           <TableHeaderColumn dataSort={true} dataField='productName'  editable={ false }>Product Name</TableHeaderColumn>
