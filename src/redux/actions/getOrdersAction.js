@@ -1,13 +1,7 @@
-import axios from 'axios'
-const setOrdersDefault = () => {
-    return function (dispatch) {
-        return  axios.get("https://productapimyshoppingcart.azurewebsites.net/Default/GetOrders").then(comments => {
-              dispatch( {
+const setOrdersDefault = (obj) => {
+     return  {
                 type: "DEFAULTORDERS",
-                payload: comments.data
-              })
-              
-        })
-    }
+                payload: obj
+             }
 }
 export default {setOrdersDefault};

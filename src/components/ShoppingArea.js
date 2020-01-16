@@ -1,9 +1,9 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card, Row, Col,Button} from 'react-bootstrap';
+import {Card, Row, Col,Button, ProgressBar} from 'react-bootstrap';
 import { useDispatch,useSelector} from 'react-redux'
 import allActions from '../redux/actions/AllActions'
-import CardGroup from 'react-bootstrap/CardGroup'
+
 const App = () => {
     const data = useSelector(state => state.product.products)
     const data2 = useSelector(state => state.getProduct.getPRoducts)
@@ -25,14 +25,14 @@ const App = () => {
     }
     return(
             
-               <CardGroup>
-                   <Row style={{width:"1200px"}} >
+             <Row style={{marginLeft:"5px"}}>
                {
                 data.length > 0 ? (
+                    
                     data.map((item,index)=>{
                         return(
                           
-                          <Col style={{margin:"10px"}}key={item.productID}>
+                          <Col xs="auto" lg="auto" md="auto" style={{margin:"10px"}}key={item.productID}>
                           
                            <Card style={{ width: '300px' }} >
                               <Card.Img variant="top" style={{height:"150px"}} src={require("../content/" + item.productImagePath.split('/')[2].toString())} />
@@ -52,12 +52,12 @@ const App = () => {
                         )
                     })
                 ):(
+
                     null
                 )
                
             } 
             </Row>
-        </CardGroup>
     )
 }
 

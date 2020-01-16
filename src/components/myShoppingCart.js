@@ -1,14 +1,15 @@
 import React,{useState}from 'react'
 import { useSelector,useDispatch} from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from 'react-bootstrap';
+import {Button, Alert} from 'react-bootstrap';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import allActions from '../redux/actions/AllActions'
-import { Route, Redirect } from 'react-router'
+
 const App = () =>{
-    const data = useSelector(state => state.getProduct.getPRoducts)
-    const[status,setStstus] = useState({toMyOrder : false})
+    const data = useSelector(state => state.getProduct.getPRoducts);
+    const [prevPurchase, setPrevPurchase] = useState({prevarr : []});
+    const [isSent, setIsSent] = useState({toMyOrder : false});
     const dispatch = useDispatch();
     const options = {
         sizePerPageList: [ {
@@ -55,9 +56,9 @@ const App = () =>{
         alert(`Save cell ${cellName} with value ${cellValue}`);
         
         let rowStr = '';
-          rowStr += "Quantity" + ': ' + row["quantity"] + '\n';
-          rowStr += "Product Price" + ': ' + row["productPrice"] + '\n';
-          rowStr += "Total"+ ': ' + row["productPrice"] * row["quantity"]
+          rowStr += "Quantity: " + row["quantity"] + '\n';
+          rowStr += "Product Price: " + row["productPrice"] + '\n';
+          rowStr += "Total: " + row["productPrice"] * row["quantity"]
           alert('Thw whole row :\n' + rowStr);
       }
       function QtyValidator(value, row) {
@@ -73,7 +74,7 @@ const App = () =>{
       const handleOrder = (data) =>{
         let now = new Date();
         let year = now.getFullYear().toString();
-        let month = (now.getMonth().toString().length == 1 ?  "0" + (now.getMonth() + 1).toString() : now.getMonth()).toString()
+        let month = (now.getMonth().toString().length === 1 ?  "0" + (now.getMonth() + 1).toString() : now.getMonth()).toString()
         let date = now.getDate().toString();
         let hour = now.getHours().toString();
          let min = now.getMinutes().toString();
@@ -81,15 +82,17 @@ const App = () =>{
          let millionsecond = now.getMilliseconds().toString();
          let UniID = year +  month + date + hour + min + second + millionsecond;
         var _model = new model(UniID)
-       
+   
         data.map((item) =>{
+          console.log(item)
           _model.orderDetails.ProductID.push(item.productID.toString())
            _model.orderDetails.Quantity.push(item.quantity.toString())
            _model.orderDetails.Total.push((item.productPrice * item.quantity).toString())
+           setPrevPurchase({...prevPurchase, prevarr : prevPurchase.prevarr.concat(item) }) 
          })
-         dispatch(allActions.ordersConfirmAction.storeOrder({_model}))
-         dispatch(allActions.removeProductsAction.removeProducts({paylaod: [] }))   
-         setStstus({...status, toMyOrder : true})
+           dispatch(allActions.ordersConfirmAction.storeOrder({_model}))
+           dispatch(allActions.removeProductsAction.removeProducts({paylaod: [] }))      
+          setIsSent({...isSent, toMyOrder : true }) 
         
       }
       const cellEditProp = {
@@ -113,7 +116,22 @@ const App = () =>{
               </div>
            
             )
-          }       
+          }   
+          {
+           
+           isSent.toMyOrder === true ? (  
+             prevPurchase.prevarr.map((item, index)=>(      
+                  <Alert key={index} variant="primary">
+                    {item.productName } purchase success
+                     Total {item.quantity * item.productPrice} 
+                  </Alert> 
+                 ))
+              
+                )
+             :(
+              null
+              )
+          }   
           <BootstrapTable data={data} version='4' pagination={true} options={ options } key cellEdit={ cellEditProp }>
           <TableHeaderColumn isKey dataField='productID' editable={ false }>Product ID  </TableHeaderColumn>
           <TableHeaderColumn dataSort={true} dataField='productName'  editable={ false }>Product Name</TableHeaderColumn>
