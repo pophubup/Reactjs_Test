@@ -6,6 +6,8 @@ import cancelProductAction from './cancelProductAction'
 import ordersConfirmAction from './ordersConfirmAction'
 import removeProductsAction from './RemoveProductsAction'
 import AllordersAction from './getOrdersAction'
+import AllCategoryAction from './getCategoryAction'
+import PostNewProducts from './PostNewProducts'
 const allActions = {
     defaultAction,
     getProductAction,
@@ -14,7 +16,9 @@ const allActions = {
     cancelProductAction,
     ordersConfirmAction,
     removeProductsAction,
-    AllordersAction
+    AllordersAction,
+    AllCategoryAction,
+    PostNewProducts 
 }
 
 export default allActions

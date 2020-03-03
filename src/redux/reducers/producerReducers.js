@@ -1,6 +1,8 @@
 const initalState ={
     products: [],
-    orders:[]
+    orders:[],
+    category:[],
+    newProduct:[]
 }
  const defaultproduct = (state = initalState, action) =>{
    
@@ -18,13 +20,23 @@ const initalState ={
         case "RESTOREPRODUCTS" :
             return{
                 ...state,
-                products :state.products.concat(action.payload)
+                products :state.products.concat(action.payload)  
+            }
+        case "POSTNEWPRODUCTS":
+            return{
+                ...state,
+                newProduct : state.newProduct.concat(action.payload)
             }
         case "DEFAULTORDERS":
             return{
                 ...state,
                 orders : action.payload
             }
+            case "DEFAULTCATEGORY":
+                return{
+                    ...state,
+                    category : action.payload
+                }
          default :
          return state;
      }

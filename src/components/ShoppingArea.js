@@ -35,7 +35,7 @@ const App = () => {
                           <Col xs="auto" lg="auto" md="auto" style={{margin:"10px"}}key={item.productID}>
                           
                            <Card style={{ width: '300px' }} >
-                              <Card.Img variant="top" style={{height:"150px"}} src={require("../content/" + item.productImagePath.split('/')[2].toString())} />
+                              <Card.Img variant="top" style={{height:"150px"}} src={item.productImagePath} />
                              <Card.Body>
                                <Card.Title>{item.productName}</Card.Title> 
                                <Row>  

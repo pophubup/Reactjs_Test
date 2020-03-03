@@ -13,7 +13,6 @@ import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
         position: { lat: 25.040740, lng:   121.573330},
         map,
         title: 'location',
-       
       });
  }
  const AnyReactComponent = ({ text }) => <div style={{width:"150px"}}><strong>{text}</strong></div>;
