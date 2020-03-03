@@ -110,9 +110,9 @@ const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
 
      
       console.log(products.arr)
-      Axios.post("http://productapimyshoppingcart.azurewebsites.net/Default/PostNewProducts",products.arr).then((response) => {
+      Axios.post("https://productapimyshoppingcart.azurewebsites.net/Default/PostNewProducts",products.arr).then((response) => {
         console.log( response.data)
-           Axios.post("http://productapimyshoppingcart.azurewebsites.net/Default/PostPic",response.data).then((result) => {
+           Axios.post("https://productapimyshoppingcart.azurewebsites.net/Default/PostPic",response.data).then((result) => {
              let message = ""; 
            products.arr.map((item) =>{
                if(item.ProductID =="0" ){
