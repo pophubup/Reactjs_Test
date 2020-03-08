@@ -28,9 +28,8 @@ const App = () =>{
         lastPage: 'Last', 
       };
        function imageFormatter(cell, row){
-          let data =  require("../content/" + cell.split('/')[2].toString())
-
-        return "<img style='width:140px; height:120px;' src='"+data+"'/>" ;
+         
+        return "<img style='width:140px; height:120px;' src='"+cell+"'/>" ;
       }
       function categoryormatter(cell, row){
           switch(cell){
