@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+data from WebApiConnectToFirebaseAndAzure project.
 In the project directory, you can run:
 
 ### `npm start`
