@@ -12,7 +12,7 @@ const App =() =>{
     useEffect(() => { 
       axios({
         method: 'GET',
-        url:  "https://productapimyshoppingcart.azurewebsites.net/Default/GetOrders",
+        url:  "http://localhost:54142/api/Default/GetOrders",
        
       }).then(comments => {     
           setOrderState(comments.data)
