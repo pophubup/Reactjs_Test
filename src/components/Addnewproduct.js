@@ -109,9 +109,7 @@ const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
   const handleMutipleNewProducts = () =>{
 
      
-      console.log(products.arr)
       Axios.post("http://localhost:54142/api/Default/PostNewProducts",products.arr).then((response) => {
-        console.log( response.data)
            Axios.post("http://localhost:54142/api/Default/PostPic",response.data).then((result) => {
              let message = ""; 
            products.arr.map((item) =>{
