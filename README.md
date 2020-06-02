@@ -1,7 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-all web api call from local directory. download the .netCore3.0withFirebaseAndAzureBlobstorage first and run it.  
 In the project directory, you can run:
 
 ### `npm start`
