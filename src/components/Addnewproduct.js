@@ -29,7 +29,8 @@ const App =() =>{
   const data = useSelector(state => state.product.category)
   const dispatch = useDispatch();
   const handleuploadImage = (e) => {
-   if(e.target.files[0].type === "image/png" || e.target.files[0].type === "image/jepg"){
+    console.log(e.target.files[0].type)
+   if(e.target.files[0].type === "image/png" || e.target.files[0].type === "image/jpeg"){
     const  reader = new FileReader();
     reader.onload = function(){
         let dataURL = reader.result;
@@ -275,7 +276,7 @@ const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
                     <Col sm md lg xs>
                           <Form.Group controlId="Image">
                               <div className="custom-file" style={{marginTop:"20px", width:"250px", marginLeft:"15px"}}>
-                              <input id="inputGroupFile01" type="file" className="custom-file-input" accept="image/x-png,image/jpeg" onChange ={(e) =>handleuploadImage(e)} />
+                              <input id="inputGroupFile01" type="file" className="custom-file-input" accept="image/*"  onChange ={(e) =>handleuploadImage(e)} />
                               <label className="custom-file-label" >{checkInput.imageName === '' ? 'Choose file' :checkInput.imageName }</label>
                               </div>
                         </Form.Group>
